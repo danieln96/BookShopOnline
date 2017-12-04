@@ -1,0 +1,78 @@
+<div class='row'>
+    <div class='col-xs-12'>
+        <%= form_for(@book, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+            <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <%= f.label :title %>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :title, class: "form-control", placeholder: "Tytuł", autofocus: true %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <%= f.label :author %>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :author, class: "form-control", placeholder: "Autor" %>
+                </div>
+            </div>
+             <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <%= f.label :publisher %>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :publisher, class: "form-control", placeholder: "Wydawca" %>
+                </div>
+            </div>
+             <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <%= f.label :pdate %>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :pdate, class: "form-control", placeholder: "Rok Wydania" %>
+                </div>
+            </div>
+             <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <%= f.label :isbn %>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :isbn, class: "form-control", placeholder: "ISBN" %>
+                </div>
+            </div>
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <%= f.label :pages %>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :pages, class: "form-control", placeholder: "Liczba stron" %>
+                </div>
+            </div>
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <%= f.label :price %>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :price, class: "form-control", placeholder: "Cena" %>
+                </div>
+            </div>
+              <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <%= f.label :copies %>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.number_field :copies, class: "form-control", placeholder: "Egzemplarze" %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <%= f.submit "Dodaj książke", class: 'btn btn-primary btn-lg' %>
+                </div>
+            </div>
+            <% end %>
+        <div class="col-xs-4 col-xs-offset-4">
+            [ <%= link_to "Anuluj i powróć do listy książek...", books_path %> ]
+        </div>
+    </div>
+</div>

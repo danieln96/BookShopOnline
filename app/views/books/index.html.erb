@@ -1,0 +1,29 @@
+<div align="center"><%= will_paginate %></div>
+<div class='jumbotron'>
+    <table class='table'>
+        <tr>
+            <th>Tytuł</th>
+            <th>Autor</th>
+            <th>Wydawca</th>
+            <th>Rok Wydania</th>
+            <th>ISBN</th>
+            <th>Liczba Stron</th>
+            <th>Cena</th>
+            <th>Egzemplarze</th>
+        </tr>
+        <% @books.each do |b| %>
+            <tr>
+                <td><%= b.title %></td>
+                <td><%= b.author %></td>
+                <td><%= b.publisher %></td>
+                <td><%= b.pdate %></td>
+                <td><%= b.isbn %></td>
+                <td><%= b.pages %></td>
+                <td><%= b.price %></td>
+                <td><%= b.copies %></td>
+                <td><%= link_to 'Edytuj', edit_book_path(b.id) %></td>
+            </tr>
+        <% end %>
+    </table>
+</div>
+<div align="center"><%= will_paginate %></div>
