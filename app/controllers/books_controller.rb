@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
    def index
-       @books = Book.paginate(page: params[:page], per_page: 5)
+       @books = Book.paginate(page: params[:page], per_page: 10)
    end
    def new
        @book = Book.new
@@ -30,7 +30,13 @@ class BooksController < ApplicationController
        end
    end
    def destroy
-       
+       @book = Book.find(params[:id])
+       if @book.destroy
+         flash[:danger] = "Pozyzja została usunięta"
+         redirect_to books_path
+       else
+          redirect_to books_path
+       end     
    end
    private
    def book_param

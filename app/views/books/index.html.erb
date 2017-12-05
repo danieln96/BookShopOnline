@@ -13,7 +13,7 @@
         </tr>
         <% @books.each do |b| %>
             <tr>
-                <td><%= b.title %></td>
+                <td><%= link_to "#{b.title}", book_path(b.id) %></td>
                 <td><%= b.author %></td>
                 <td><%= b.publisher %></td>
                 <td><%= b.pdate %></td>
@@ -21,7 +21,7 @@
                 <td><%= b.pages %></td>
                 <td><%= b.price %></td>
                 <td><%= b.copies %></td>
-                <td><%= link_to 'Edytuj', edit_book_path(b.id) %></td>
+                <td><%= link_to 'Edytuj', edit_book_path(b.id), class: "btn btn-xs btn-primary" %></td>
             </tr>
         <% end %>
     </table>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   
+  devise_for :models
   root "pages#home"
   resources :books
   # The priority is based upon order of creation: first created -> highest priority.
