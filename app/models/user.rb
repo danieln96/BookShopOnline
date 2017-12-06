@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+    has_one :address
     before_save { self.email = email.downcase }
     validates :username, presence:true,
             uniqueness: { case_sensitive: false },

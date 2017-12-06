@@ -1,0 +1,15 @@
+<h1 align='center'>Twój adres</h1>
+<div><label>Ulica</label>
+<%=@address.street%></div>
+<div><label>Numer domu</label>
+<%=@address.homenumber%></div>
+<div><label>Numer mieszkania</label>
+<%=@address.apartnumber%></div>
+<div><label>Kod pocztowy</label>
+<%=@address.postalcode%></div>
+<div><label>Miejscowość</label>
+<%=@address.city%></div>
+<div><label>Numer telefonu</label>
+<%=@address.telnumber%></div>
+
+<%= link_to 'Edytuj', edit_address_path(current_user), class: 'btn btn-xs btn-primary' %>

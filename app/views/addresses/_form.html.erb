@@ -1,0 +1,64 @@
+<%= render 'layouts/errors', obj: @address %>
+
+<div class='row'>
+    <div class='col-xs-12'>
+        <%= form_for(@address, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+            <div class="form-group">
+                <div class="control-label col-sm-2">
+                   <label> Ulica </label>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :street, class: "form-control", autofocus: true %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <label>Numer domu</label>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :homenumber, class: "form-control" %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <label>Numer mieszkania</label>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :apartnumber, class: "form-control" %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <label>Kod pocztowy</label>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :postalcode, class: "form-control", placeholder: "xx-xxx" %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <label>Miejscowość</label>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :city, class: "form-control" %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <label>Numer telefonu</label>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_field :telnumber, class: "form-control" %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <%= f.submit(@address.new_record? ? "Dodaj adres" : "Edytuj adres", class: 'btn btn-primary btn-lg') %>
+                </div>
+            </div>
+            <% end %>
+        <div class="col-xs-4 col-xs-offset-4">
+            [ <%= link_to "Powrót do strony głównej", root_path %> ]
+        </div>
+    </div>
+</div>
