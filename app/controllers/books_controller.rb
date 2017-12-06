@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+   before_action :require_admin, only: [:destroy, :edit, :update, :new, :create]
    def index
        @books = Book.paginate(page: params[:page], per_page: 10)
    end
@@ -42,4 +43,10 @@ class BooksController < ApplicationController
    def book_param
       params.require(:book).permit(:title, :author, :publisher, :pdate, :isbn, :pages, :price, :copies)
    end
+    def require_admin
+        if !logged_in? || (logged_in? and !current_user.admin?)
+            flash[:danger] = "Tylko admin może zrobić coś takiego"
+            redirect_to root_path
+        end
+    end
 end

@@ -21,7 +21,10 @@
                 <td><%= b.pages %></td>
                 <td><%= b.price %></td>
                 <td><%= b.copies %></td>
+                <% if logged_in? && current_user.admin? %>
                 <td><%= link_to 'Edytuj', edit_book_path(b.id), class: "btn btn-xs btn-primary" %></td>
+                <td><%= link_to 'Usuń', book_path(b.id), method: :delete, class: "btn btn-xs btn-danger" %></td>
+                <% end %>
             </tr>
         <% end %>
     </table>
