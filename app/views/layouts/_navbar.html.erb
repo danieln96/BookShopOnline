@@ -35,6 +35,12 @@
       <div class="form-group">
       <%= text_field_tag :search, params[:search], placeholder: "Wyszukaj książkę", class: 'form-control' %>
       </div>
+      <div class="form-group">
+        <%= select_tag "category", options_for_select([["Książka","title"], ["Autor","author"], ["Wydawca", "publisher"], ["Data wydania","pdate"], ["ISBN", "isbn"]], "Książka"), class: 'form-control' %>
+      </div>
+      <div class='form-group'>
+        <%= select_tag 'price', options_for_select([["Cena rosnąco", "ASC"],["Cena malejąco", "DESC"]]), class: 'form-control' %>
+      </div>
       <%= submit_tag "Wyszukaj", class: 'btn btn-default' %>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
