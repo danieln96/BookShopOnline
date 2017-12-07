@@ -2,6 +2,9 @@ class BooksController < ApplicationController
    before_action :require_admin, only: [:destroy, :edit, :update, :new, :create]
    def index
        @books = Book.paginate(page: params[:page], per_page: 10)
+       if params[:search]
+          @books = Book.search(params[:search]).order("created_at DESC")
+       end
    end
    def new
        @book = Book.new

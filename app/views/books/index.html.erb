@@ -1,4 +1,3 @@
-<div align="center"><%= will_paginate %></div>
 <div class='jumbotron'>
     <table class='table'>
         <tr>
@@ -11,22 +10,29 @@
             <th>Cena</th>
             <th>Egzemplarze</th>
         </tr>
-        <% @books.each do |b| %>
-            <tr>
-                <td><%= link_to "#{b.title}", book_path(b.id) %></td>
-                <td><%= b.author %></td>
-                <td><%= b.publisher %></td>
-                <td><%= b.pdate %></td>
-                <td><%= b.isbn %></td>
-                <td><%= b.pages %></td>
-                <td><%= b.price %></td>
-                <td><%= b.copies %></td>
-                <% if logged_in? && current_user.admin? %>
-                <td><%= link_to 'Edytuj', edit_book_path(b.id), class: "btn btn-xs btn-primary" %></td>
-                <td><%= link_to 'Usuń', book_path(b.id), method: :delete, class: "btn btn-xs btn-danger" %></td>
-                <% end %>
-            </tr>
+        <% if @books.present? %>
+            <% @books.each do |b| %>
+                <tr>
+                    <td><%= link_to "#{b.title}", book_path(b.id) %></td>
+                    <td><%= b.author %></td>
+                    <td><%= b.publisher %></td>
+                    <td><%= b.pdate %></td>
+                    <td><%= b.isbn %></td>
+                    <td><%= b.pages %></td>
+                    <td><%= b.price %></td>
+                    <td><%= b.copies %></td>
+                    <% if logged_in? && current_user.admin? %>
+                    <td><%= link_to 'Edytuj', edit_book_path(b.id), class: "btn btn-xs btn-primary" %></td>
+                    <td><%= link_to 'Usuń', book_path(b.id), method: :delete, class: "btn btn-xs btn-danger" %></td>
+                    <% end %>
+                </tr>
+            <% end %>
+              </table>
+        <% else %>
+            <p>Nie znaleziono</p>
         <% end %>
-    </table>
+
 </div>
+<% if params[:page] %>
 <div align="center"><%= will_paginate %></div>
+<% end %>
