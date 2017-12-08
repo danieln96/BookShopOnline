@@ -4,6 +4,7 @@ class BooksController < ApplicationController
        @books = Book.paginate(page: params[:page], per_page: 10)
        if params[:search]
           @books = Book.search(params[:search],params[:category]).order("price #{params[:price]}")
+          @books = @books.paginate(page: params[:page], per_page: 10)
        end
    end
    def new
