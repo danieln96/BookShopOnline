@@ -15,7 +15,6 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to "Lista książek", books_path %></li>
-        <li><a href="#">Link</a></li>
         <% if logged_in? && current_user.admin? %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Panel Admina <span class="caret"></span></a>
@@ -31,7 +30,7 @@
         </li>
         <% end %>
       </ul>
-      <%= form_tag(books_path, :method => "get", id: "search-form", class: 'navbar-form navbar-left' ) do %>
+      <%= form_tag(books_path, :method => "get", class: 'navbar-form navbar-left' ) do %>
       <div class="form-group">
       <%= text_field_tag :search, params[:search], placeholder: "Wyszukaj książkę", class: 'form-control' %>
       </div>
@@ -45,6 +44,7 @@
       <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
+          <li><%= link_to "Zamówienie nr #{session[:order_id]}", order_path(session[:order_id]) %></li>
           <li><%= link_to "Wyloguj", logout_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Zaloguj", login_path %></li>

@@ -32,6 +32,17 @@
                     <td><%= link_to 'Edytuj', edit_book_path(b.id), class: "btn btn-xs btn-primary" %></td>
                     <td><%= link_to 'Usuń', book_path(b.id), method: :delete, class: "btn btn-xs btn-danger" %></td>
                     <% end %>
+                    <% if logged_in? %>
+                    <td>
+                        <%= form_tag(item_orders_path, :method => 'get') do %>
+                        <div class='form-group'>
+                        <%= number_field_tag 'quantities', 1, min: 1, max: b.copies, class: 'form-control' %>
+                        </div>
+                        <%= hidden_field_tag 'book',  b.id %>
+                        <%= submit_tag "Dodaj do koszyka", class: 'btn btn-success' %>
+                        <% end %>
+                    </td>
+                    <% end %>
                 </tr>
             <% end %>
               </table>

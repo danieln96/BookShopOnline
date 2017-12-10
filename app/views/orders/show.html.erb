@@ -1,0 +1,22 @@
+<%= @order.status %>
+<table class='table'>
+    <th>Tytuł</th>
+    <th>Cena</th>
+    <th>Ilość</th>
+    <% @order_items.each do |item| %>
+    <tr>
+        <td><%= Book.find_by(id: item.book_id).title %></td>
+        <td><%= Book.find_by(id: item.book_id).price %> PLN</td>
+        <td>
+            <%= form_tag(edit_item_orders_path, :method => 'get') do %>
+            <%= number_field_tag 'quantities', item.quantity, min: 1, max: Book.find_by(id: item.book_id).copies, class: 'form-control' %>
+            <%= hidden_field_tag 'book', item.book_id %>
+            <%= submit_tag "Edytuj", class: 'btn btn-primary' %>
+            <% end %>
+        </td>
+        <td><%= link_to "Usuń", item_order_path(item.id), method: :delete, class: 'btn btn-danger' %></td>
+    </tr>
+    <% end %>
+</table>
+
+<h1>Razem: </h1><h3><%= @order.total %></h3>
