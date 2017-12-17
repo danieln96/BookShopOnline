@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   resources :addresses, path: 'addresses', except: [:destroy]
   
-  resources :orders, except: [:index, :create, :update, :edit]
+  resources :orders, except: [:create, :update, :edit]
     get 'place_order', to: 'orders#edit'
   resources :item_orders, only: [:destroy]
   get 'item_orders', to: 'item_orders#create'

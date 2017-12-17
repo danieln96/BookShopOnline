@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
     belongs_to :user
-    has_many    :orderitem
+    has_many    :orderitems
+    has_one :delivery
 end

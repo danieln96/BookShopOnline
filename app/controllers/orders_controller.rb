@@ -34,11 +34,7 @@ class OrdersController < ApplicationController
        end
    end
    def index
-      if Order.exists?(:user_id => "#{current_user.id}", :status => ["Realizowanie","Wysłano"])
-          
-      else
-          
-      end
+       @orders = Order.where("user_id LIKE '#{current_user.id}' AND status NOT LIKE 'Koszyk'")
    end
    def update
        
