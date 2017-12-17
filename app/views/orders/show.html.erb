@@ -18,5 +18,24 @@
     </tr>
     <% end %>
 </table>
-
-<h1>Razem: </h1><h3><%= @order.total %></h3>
+<div class="row">
+        <div class="col-sm-offset-9 col-sm-3">
+            <h1>Razem: </h1><h3><%= @order.total %> PLN</h3>        
+        </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <%= form_tag(place_order_path, :method => "get") do %>
+            <div class="col-sm-3">
+                Wybierz sposób dostawy:
+            </div>
+            <div class="col-sm-3">
+                <%= select_tag "delivery", options_from_collection_for_select(@deliveries, "id", "title"), class: 'form-control' %>
+                </div>
+        <div class="col-xs-12">
+            <%= submit_tag "Złóż zamówienie", class: 'btn-lg btn-success' %>
+        </div>
+        
+        <% end %>
+    </div>
+</div>

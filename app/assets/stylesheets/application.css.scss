@@ -1,6 +1,15 @@
-$navbar-default-bg: #3939ac;
+$navbar-default-bg: #2f6808;
 $navbar-default-link-color: #ffffff;
 $navbar-default-link-hover-color: #ffffb3;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.jumbotron {
+    margin-bottom: 0px;
+    background-image: asset-url('book.jpg');
+    height: 550px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black;
+}

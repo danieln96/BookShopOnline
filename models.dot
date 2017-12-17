@@ -1,0 +1,11 @@
+digraph models_diagram {
+	graph[overlap=false, splines=true, bgcolor="none"]
+	"Delivery" [shape=Mrecord, label="{Delivery|id :INTEGER\ltype :varchar\lprice :decimal\l}"]
+	"Order" [shape=Mrecord, label="{Order|id :INTEGER\ltotal :decimal\lstatus :varchar\luser_id :integer\lcreated_at :datetime\lupdated_at :datetime\ldelivery_id :integer\l}"]
+	"Book" [shape=Mrecord, label="{Book|id :INTEGER\ltitle :varchar\lauthor :varchar\lpublisher :varchar\lpdate :varchar\lisbn :varchar\lpages :varchar\lcopies :integer\lprice :decimal\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Address" [shape=Mrecord, label="{Address|id :INTEGER\lstreet :varchar\lhomenumber :varchar\lapartnumber :varchar\lpostalcode :varchar\lcity :varchar\ltelnumber :varchar\luser_id :integer\l}"]
+	"User" [shape=Mrecord, label="{User|id :INTEGER\lusername :varchar\lemail :varchar\lpassword_digest :varchar\ladmin :boolean\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"OrderItem" [shape=Mrecord, label="{OrderItem|id :INTEGER\lbook_id :integer\lquantity :integer\lorder_id :integer\l}"]
+	"User" -> "Order" [arrowtail=odot, arrowhead=crow, dir=both color="#0B79B2"]
+	"User" -> "Address" [arrowtail=odot, arrowhead=dot, dir=both color="#AB97AE"]
+}

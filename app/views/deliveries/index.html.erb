@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="col-sm-2">
+           Rodzaj
+        </div>
+        <div class="col-sm-2">
+            Cena
+        </div>
+    </div>
+</div>
+        <% @deliveries.each do |delivery| %>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="col-sm-2">
+           <%= delivery.title %>
+        </div>
+        <div class="col-sm-2">
+            <%= delivery.price %> PLN
+        </div>
+        <% if logged_in? && current_user.admin? %>
+        <div class="col-sm-2">
+            <%= link_to "Edytuj", edit_delivery_path(delivery.id), class:'btn btn-info' %>
+        </div>
+        <% end %>
+    </div>
+</div>
+        
+<% end %>
+
+
+        <div class="col-xs-4 col-xs-offset-4">
+            [ <%= link_to "Anuluj i powróć do listy książek...", books_path %> ]
+        </div>

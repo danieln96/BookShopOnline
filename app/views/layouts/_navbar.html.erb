@@ -20,7 +20,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Panel Admina <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Dodaj książkę", new_book_path %></li>
-            <li><a href="#">Another action</a></li>
+            <li><%= link_to "Dodaj sposób dostawy", new_delivery_path %></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
@@ -44,24 +44,25 @@
       <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-          <li><%= link_to "Zamówienie nr #{session[:order_id]}", order_path(session[:order_id]) %></li>
-          <li><%= link_to "Wyloguj", logout_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Zaloguj", login_path %></li>
-          <li><%= link_to "Zarejestruj", register_path %></li>
-        <% end %>
-        <% if logged_in? %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Panel użytkownia <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Adres dostawy", addresses_path %></li>
-            <li><a href="#">Another action</a></li>
+            <li><%= link_to "Rodzaje przesyłek", deliveries_path %></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
           </ul>
         </li>
         <% end %>
+        <% if logged_in? %>
+          <li><%= link_to "Zamówienie nr #{session[:order_id]}", order_path(session[:order_id]) %></li>
+          <li><%= link_to "Wyloguj", logout_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Zaloguj", login_path %></li>
+          <li><%= link_to "Zarejestruj", register_path %></li>
+        <% end %>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
