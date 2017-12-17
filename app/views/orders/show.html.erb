@@ -1,3 +1,4 @@
+<% if OrderItem.exists?(:order_id => '#{session[:order_id]}') %>
 <%= @order.status + " nr zamówienia #{session[:order_id]}" %>
 <table class='table'>
     <th>Tytuł</th>
@@ -39,3 +40,6 @@
         <% end %>
     </div>
 </div>
+<% else %>
+<h2>Dodaj książki do zamówienia...</h2>
+<% end %>

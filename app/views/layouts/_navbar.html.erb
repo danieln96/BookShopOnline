@@ -21,11 +21,6 @@
           <ul class="dropdown-menu">
             <li><%= link_to "Dodaj książkę", new_book_path %></li>
             <li><%= link_to "Dodaj sposób dostawy", new_delivery_path %></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
         <% end %>
@@ -49,9 +44,7 @@
           <ul class="dropdown-menu">
             <li><%= link_to "Adres dostawy", addresses_path %></li>
             <li><%= link_to "Rodzaje przesyłek", deliveries_path %></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><%= link_to "Twoje zamówienia", orders_path %> </li>
           </ul>
         </li>
         <% end %>

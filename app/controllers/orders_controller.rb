@@ -25,11 +25,19 @@ class OrdersController < ApplicationController
           @items.each do |item|
              @book = Book.find_by(id: item.order_id)
              @book.copies = @book.copies - item.quantity
+             if @book.copies < 0 
+                 flash[:danger] = "Nie możemy zrealizować tego zamówienia"
+                 redirect_to order_path
+             end
+          end
+          @items.each do |item|
+             @book = Book.find_by(id: item.order_id)
+             @book.copies = @book.copies - item.quantity
              @book.save
           end
           @order.status = "Do zapłaty"
           @order.save
-          flash[:success] = "Złożono zamówienie"
+          flash[:success] = "Złożono zamówienie dupa"
           redirect_to new_order_path
        end
    end
@@ -63,7 +71,7 @@ class OrdersController < ApplicationController
       if Address.exists?(:user_id => "#{current_user.id}") 
           
       else
-          flash[:danger] = "Musisz dodać adres do swojego konta."
+          flash[:danger] = "Musisz dodać adres dupa do swojego konta."
           redirect_to addresses_path
       end
    end
