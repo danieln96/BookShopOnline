@@ -1,4 +1,4 @@
-<%= @order.status %>
+<%= @order.status + " nr zamówienia #{session[:order_id]}" %>
 <table class='table'>
     <th>Tytuł</th>
     <th>Cena</th>

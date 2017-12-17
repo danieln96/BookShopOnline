@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
            @order_items.each do |item|
                tot = Book.find_by(id: item.book_id).price*item.quantity + tot
            end
-           @order = Order.find_by(session[:order_id])
+           @order = Order.find_by(id: session[:order_id])
            @order.total = tot
            @order.save
        end
