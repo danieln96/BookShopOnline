@@ -10,11 +10,11 @@ class UsersController < ApplicationController
     if @user.save
         session[:user_id] = @user.id
         flash[:success] = "Witamy #{@user.username}!"
-        redirect_to root_path
+        redirect_to new_order_path
     else
        render 'new' 
     end
-   end
+    end
    def edit
        
    end
