@@ -14,6 +14,7 @@ class ItemOrdersController < ApplicationController
         else
            @item = OrderItem.new(book_id: params[:book], quantity: params[:quantities], order_id: session[:order_id])
            @item.save
+           flash[:success] = "Dodano do koszyka"
            redirect_to books_path
         end
    end

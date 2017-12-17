@@ -1,4 +1,4 @@
-<% if OrderItem.exists?(:order_id => '#{session[:order_id]}') %>
+<% if !OrderItem.where(order_id: session[:order_id]).empty? %>
 <%= @order.status + " nr zamówienia #{session[:order_id]}" %>
 <table class='table'>
     <th>Tytuł</th>
