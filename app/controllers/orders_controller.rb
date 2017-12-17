@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
        end
    end
    def index
-       @orders = Order.where("user_id LIKE '#{current_user.id}' AND status NOT LIKE 'Koszyk'")
+       @orders = Order.where("user_id LIKE #{current_user.id} AND status NOT LIKE 'Koszyk'")
    end
    def update
        
