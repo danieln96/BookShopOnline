@@ -1,0 +1,19 @@
+<h1 align="center">Twoje zamówienia</h1>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="col-sm-1">Nr zamówienia</div>
+        <div class="col-sm-2">Kwota</div>
+        <div class="col-sm-2">Sposób dostawy</div>
+        <div class="col-sm-2">Ostatnie działanie</div>
+    </div>
+</div>
+<div class="row">
+    <% @orders.each do |order| %>
+        <div class="col-xs-12">
+            <div class="col-sm-1"><%= order.id %></div>
+            <div class="col-sm-2"><%= order.total %></div>
+            <div class="col-sm-2"><%= Delivery.find_by(id: order.delivery_id).title %></div>
+            <div class="col-sm-2"><%= order.updated_at.strftime( "%F %T ") %></div>
+        </div>
+    <% end %>
+</div> 
