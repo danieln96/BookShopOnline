@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:edit, :update, :show]
     before_action :require_same_user, only: [:edit, :update]
-    before_action :require_admin, only: [:destroy]
+    before_action :require_admin, only: [:getadmin, :index, :destroy]
     def new
         @user = User.new
     end
@@ -32,7 +32,14 @@ class UsersController < ApplicationController
        end
    end
     def index
-        
+        @users = User.paginate(page: params[:page], per_page: 20)
+    end
+    def getadmin
+        @user = User.find(params[:id])
+        @user.admin = true
+        @user.save
+        flash[:success] = "Udało się"
+        redirect_to users_path
     end
    private
    def user_params

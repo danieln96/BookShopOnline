@@ -6,6 +6,7 @@
             <div class="col-sm-2">Kwota</div>
             <div class="col-sm-2">Sposób dostawy</div>
             <div class="col-sm-2">Ostatnie działanie</div>
+            <div class="col-sm-2">Status</div>
         </div>
     </div>
     <div class="row">
@@ -15,6 +16,7 @@
                 <div class="col-sm-2"><%= order.total %></div>
                 <div class="col-sm-2"><%= Delivery.find_by(id: order.delivery_id).title %></div>
                 <div class="col-sm-2"><%= order.updated_at.strftime( "%F %T ") %></div>
+                <div class="col-sm-2"><%= order.status %></div>
             </div>
         <% end %>
     </div>

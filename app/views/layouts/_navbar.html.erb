@@ -21,6 +21,8 @@
           <ul class="dropdown-menu">
             <li><%= link_to "Dodaj książkę", new_book_path %></li>
             <li><%= link_to "Dodaj sposób dostawy", new_delivery_path %></li>
+            <li><%= link_to "Lista użytkowników", users_path %></li>
+            <li><%= link_to "Zamówienia", adminorders_path %></li>
           </ul>
         </li>
         <% end %>
@@ -35,7 +37,7 @@
       <div class='form-group'>
         <%= select_tag 'price', options_for_select([["Cena rosnąco", "ASC"],["Cena malejąco", "DESC"]]), class: 'form-control' %>
       </div>
-      <%= submit_tag "Wyszukaj", class: 'btn btn-info' %>
+      <%= submit_tag "Wyszukaj", class: 'btn btn-success' %>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>

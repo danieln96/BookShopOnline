@@ -1,0 +1,25 @@
+<% if @orders.any? %>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Nazwa użytkownika</th>
+            <th>Ostatnia aktualizacja</th>
+            <th>Kwota</th>
+            <th>Rodzaj przesyłki</th>
+            <th>Status</th>
+        </tr>
+        <% @orders.each do |order| %>
+        <tr>
+            <td><%= link_to "#{order.id}", showorderitems_path(:id => "#{order.id}") %></td>
+            <td><%= User.find(order.user_id).username %></td>
+            <td><%= order.created_at.strftime( "%F %T ") %></td>
+            <td><%= order.total %></td>
+            <td><%= Delivery.find(order.delivery_id).title %></td>
+            <td><%= order.status %></td>
+            <% if order.status != "Wysłano" %>
+            <td><%= order.status =="Realizowanie" ? (link_to "wysłano", shipmentorder_path(:id => "#{order.id}") ,class: "btn btn-xs btn-info") : (link_to "zapłacono", paymentorder_path(:id => "#{order.id}"), class: "btn btn-xs btn-default") %></td>
+            <% end %>
+        </tr>
+        <% end %>
+    </table>
+<% end %>

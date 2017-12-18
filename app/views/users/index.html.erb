@@ -1,0 +1,23 @@
+<% if @users.any? %>
+    <table class="table">
+        <tr>
+            <th>Nazwa użytkownika</th>
+            <th>Email</th>
+            <th>Utworzono</th>
+            <th>Status</th>
+        </tr>
+        <% @users.each do |user| %>
+        <tr>
+            <td><%= user.username %></td>
+            <td><%= user.email %></td>
+            <td><%= user.created_at.strftime( "%F %T ") %></td>
+            <td><%= user.admin==true ? "admin" : "użytkownik" %></td>
+            <td>
+                <%= link_to "Usuń", user_path(user.id), method: :delete, class: "btn btn-xs btn-danger" %>
+                <%= link_to "Nadaj admina", admin_path(:id => "#{user.id}"), class: "btn btn-xs btn-primary" %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+<div align="center"><%= will_paginate %></div>
+<% end %>

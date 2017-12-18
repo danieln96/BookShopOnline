@@ -1,0 +1,37 @@
+<div class='container'>
+    <table class='table'>
+        <tr>
+            <th>Tytuł</th>
+            <th>Autor</th>
+            <th>Wydawca</th>
+            <th>Rok Wydania</th>
+            <th>ISBN</th>
+            <th>Liczba Stron</th>
+        </tr>
+        <% @items.each do |item| %>
+        <tr>
+            <td><%= Book.find(item.book_id).title %></td>
+            <td><%= Book.find(item.book_id).author %></td>
+            <td><%= Book.find(item.book_id).publisher %></td>
+            <td><%= Book.find(item.book_id).pdate %></td>
+            <td><%= Book.find(item.book_id).isbn %></td>
+            <td><%= Book.find(item.book_id).pages %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+<h3>Dane do wysyłki:</h3>
+<div><label>Ulica</label>
+<%=@address.street%></div>
+<div><label>Numer domu</label>
+<%=@address.homenumber%></div>
+<div><label>Numer mieszkania</label>
+<%=@address.apartnumber%></div>
+<div><label>Kod pocztowy</label>
+<%=@address.postalcode%></div>
+<div><label>Miejscowość</label>
+<%=@address.city%></div>
+<div><label>Numer telefonu</label>
+<%=@address.telnumber%></div>
+<h3>Wysyłka: <%= Delivery.find(@order.id).title %></h3>
+<%= link_to "wyślij", shipmentorder_path(:id => "#{@order.id}") ,class: "btn btn-lg btn-success" %>
