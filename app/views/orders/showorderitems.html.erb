@@ -33,5 +33,5 @@
 <%=@address.city%></div>
 <div><label>Numer telefonu</label>
 <%=@address.telnumber%></div>
-<h3>Wysyłka: <%= Delivery.find(@order.id).title %></h3>
+<h3>Wysyłka: <%= Delivery.find(@order.delivery_id).title %></h3>
 <%= link_to "wyślij", shipmentorder_path(:id => "#{@order.id}") ,class: "btn btn-lg btn-success" %>

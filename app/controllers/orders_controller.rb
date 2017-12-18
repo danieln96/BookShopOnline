@@ -65,7 +65,7 @@ class OrdersController < ApplicationController
    def showorderitems
        @order = Order.find(params[:id])
        @items = OrderItem.where("order_id = #{params[:id]}")
-       @address = Address.find(User.find(@order.user_id))
+       @address = Address.find_by(user_id: @order.user_id)
    end
    def update
        
