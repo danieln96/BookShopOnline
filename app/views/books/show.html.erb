@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-sm-3">
+      <div align='center'><%= image_tag @book.avatar.url(:medium) %></div>
+        <ul class="list-group">
+          <li class="list-group-item"><%= @book.title %></li>
+          <li class="list-group-item"><%= @book.author %></li>
+          <li class="list-group-item"><%= @book.publisher %></li>
+          <li class="list-group-item"><%= @book.pdate %></li>
+          <li class="list-group-item"><%= @book.isbn %></li>
+          <li class="list-group-item"><%= @book.pages %></li>
+          <li class="list-group-item"><%= @book.price %></li>
+        </ul>
+  </div>
+  <div class="col-sm-9">
+      <% if @opinions %>
+            <% @opinions.each do |opinion| %>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                            Opinia użytkownika:
+                            <b><%= "#{User.find(opinion.user_id).username}" %></b>
+                        <span class="badge" align='left'><%= "Ocena: #{opinion.rate}/10"%></span>
+                    </div>
+                    <div class="panel-body">
+                        <%= opinion.description %>
+                        
+                    </div>
+                </div>
+            <% end %>
+        <% else %>
+            Brak opinii...
+        <% end %>
+        <%= render "opinions/new" %>
+  </div>
+
+</div>
+        <div class="col-xs-4 col-xs-offset-4">
+            [ <%= link_to "Anuluj i powróć do listy książek...", books_path %> ]
+        </div>

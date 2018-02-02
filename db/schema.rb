@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211235720) do
+ActiveRecord::Schema.define(version: 20180202135234) do
 
   create_table "addresses", force: :cascade do |t|
     t.string  "street"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20171211235720) do
     t.string  "city"
     t.string  "telnumber"
     t.integer "user_id"
+  end
+
+  create_table "book_categories", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "category_id"
+  end
+
+  create_table "book_opinions", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "user_id"
+    t.integer "opinion_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -34,11 +45,29 @@ ActiveRecord::Schema.define(version: 20171211235720) do
     t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "counter",             default: 0
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "deliveries", force: :cascade do |t|
     t.string  "title"
     t.decimal "price"
+  end
+
+  create_table "opinions", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "rate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "book_id"
+    t.integer  "user_id"
   end
 
   create_table "order_items", force: :cascade do |t|

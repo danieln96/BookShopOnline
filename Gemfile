@@ -14,6 +14,9 @@ gem 'will_paginate', '~> 3.1.1'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bcrypt', '~> 3.1.7'
 
+#obrazki
+gem "paperclip", "~> 5.2.1"
+
 group :development, :test do
   gem 'byebug'
   gem 'spring'

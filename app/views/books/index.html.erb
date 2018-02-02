@@ -1,7 +1,12 @@
+<% if !logged_in? %>
+    <h2 align='center'><%= link_to "Zaloguj się, aby zamówić książki", login_path %></h2>
+<% end %>
 <div align="center"><%= will_paginate %></div>
 <div class='container'>
     <table class='table'>
         <tr>
+            <th>Okładka</th>
+            <th>Kategoria</th>
             <th>Tytuł</th>
             <th>Autor</th>
             <th>Wydawca</th>
@@ -14,7 +19,19 @@
         <% if @books.present? %>
             <% @books.each do |b| %>
                 <tr>
-                    <td><%= link_to "#{b.title}", book_path(b.id) %></td>
+                    <td>
+                        <%= link_to book_path(b) do %>
+                        <%= image_tag b.avatar.url(:thumb) %>
+                        <% end %>
+                    </td>
+                    <td>
+                        <% b.categories.each do |c| %>
+                        <span class="label label-primary"><%= c.name %></span></br>
+                        <% end %>
+                    </td>
+                    <td>
+                        <%= b.title %>
+                    </td>
                     <td><%= b.author %></td>
                     <td><%= b.publisher %></td>
                     <td><%= b.pdate %></td>

@@ -48,7 +48,7 @@ class AddressesController < ApplicationController
             redirect_to root_path
         end
     else
-        flash[:notice] = "Musisz na sam wpierw dodać adres"
+        flash[:danger] = "Musisz na sam wpierw dodać adres"
         redirect_to new_address_path(params[:id])
     end
 end

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+    has_many :opinions, :as => :imageable
     has_many :orders
     has_one :address
     before_save { self.email = email.downcase }

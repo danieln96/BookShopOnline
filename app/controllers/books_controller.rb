@@ -21,6 +21,9 @@ class BooksController < ApplicationController
    end
    def show
        @book = Book.find(params[:id])
+       @book.counter += 1
+       @book.save
+       @opinions = Opinion.where(book_id: @book.id)
    end
    def edit
        @book = Book.find(params[:id])
@@ -45,7 +48,7 @@ class BooksController < ApplicationController
    end
    private
    def book_param
-      params.require(:book).permit(:title, :author, :publisher, :pdate, :isbn, :pages, :price, :copies)
+      params.require(:book).permit(:title, :author, :publisher, :pdate, :isbn, :pages, :price, :copies, :avatar, category_ids: [])
    end
     def require_admin
         if !logged_in? || (logged_in? and !current_user.admin?)

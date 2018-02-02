@@ -1,3 +1,27 @@
+<style>
+    .list-group-item {
+        font: italic bold 12px/30px Georgia, serif;
+        background-color: #e0eaeb;
+    }
+</style>
 <div class="jumbotron">
 <h1>Witamy w księgarni internetowej <div style="color:#e86422">BookShopOnline!</div></h1>
 </div>
+    <div align='center' style='background-color: #d9e6f2;border-radius: 20px;' class="row">
+        <h2>Najpopularniejsze pozycje</h2>
+        <% @books.each do |b| %>
+        <div class="col-sm-4">
+            <%= link_to book_path(b) do %>
+            <div class="col-sm-4"><%= image_tag b.avatar.url(:medium) %></div>
+            <div class="col-sm-8">                
+            <ul class="list-group">
+                  <li class="list-group-item">
+                      <%= "Tytuł #{b.title}" %>
+                      </li>
+                  <li class="list-group-item">Autor <%= "#{b.author}" %></li>
+                  <li class="list-group-item">Wydawca <%= "#{b.publisher}" %></li>
+                </ul></div>
+            <% end %>
+        </div>
+        <% end %>
+    </div>

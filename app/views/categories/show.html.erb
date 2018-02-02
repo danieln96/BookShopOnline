@@ -1,0 +1,12 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <%= @category.name %>
+  </div>
+  <div class="panel-body">
+      <% @category.books.each do |book| %>
+      <ul class="list-group">
+          <li class="list-group-item"><%= link_to "#{book.title}", book_path(book) %></li>
+      </ul>
+      <% end %>
+  </div>
+</div>

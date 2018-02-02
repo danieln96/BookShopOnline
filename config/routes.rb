@@ -24,5 +24,7 @@ Rails.application.routes.draw do
   get 'edit_item_orders', to: 'item_orders#edit'
 
   resources :deliveries
+  resources :opinions, except: [:edit, :update, :destroy]
+  resources :categories
 
 end
