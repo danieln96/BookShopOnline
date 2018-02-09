@@ -17,6 +17,9 @@ gem 'bcrypt', '~> 3.1.7'
 #obrazki
 gem "paperclip", "~> 5.2.1"
 
+#pdfy
+gem "prawn", "~> 1.3"
+gem 'prawn-table', '~> 0.1.0'
 group :development, :test do
   gem 'byebug'
   gem 'spring'

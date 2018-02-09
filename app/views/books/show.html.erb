@@ -1,17 +1,115 @@
 <div class="row">
   <div class="col-sm-3">
       <div align='center'><%= image_tag @book.avatar.url(:medium) %></div>
-        <ul class="list-group">
-          <li class="list-group-item"><%= @book.title %></li>
-          <li class="list-group-item"><%= @book.author %></li>
-          <li class="list-group-item"><%= @book.publisher %></li>
-          <li class="list-group-item"><%= @book.pdate %></li>
-          <li class="list-group-item"><%= @book.isbn %></li>
-          <li class="list-group-item"><%= @book.pages %></li>
-          <li class="list-group-item"><%= @book.price %></li>
-        </ul>
+      <table class="table table-striped">
+          <thead>
+              
+          </thead>
+          <tbody>
+              <tr>
+                  <td>
+                      <label>Tytuł</label>
+                  </td>
+                  <td>
+                      <%= @book.title %>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>Autor</label>
+                  </td>
+                  <td>
+                      <%= @book.author %>
+                  </td>                  
+              </tr>
+              <tr>
+                  <td>
+                      <label>Wydawca</label>
+                  </td>
+                  <td>
+                      <%= @book.publisher %>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>Data wydania</label>
+                  </td>
+                  <td>
+                      <%= @book.pdate %>
+                  </td>                  
+              </tr>
+              <tr>
+                  <td>
+                      <label>ISBN</label>
+                  </td>
+                  <td>
+                      <%= @book.isbn %>
+                  </td>                    
+              </tr>
+              <tr>
+                  <td>
+                      <label>Strony</label>
+                  </td>
+                  <td>
+                      <%= @book.pages %>
+                  </td>                    
+              </tr>
+              <tr>
+                  <td>
+                      <label>Cena</label>
+                  </td>
+                  <td>
+                      <%= @book.price %>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>Kategorie</label>
+                  </td>
+                  <td>
+                    <% @book.categories.each do |category| %>
+                        <%= link_to "#{category.name}", books_path(:cat => "#{category.id}"),class:"bnt btn-xs btn-info" %>
+                    <% end %>
+                      
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>Średnia opinia</label>
+                  </td>
+                  <td>
+                      <% if !@opinions.any? %>
+                          Brak opinii
+                      <% else %>
+                          <%= @opinions.average(:rate) %>
+                      <% end %>
+                      
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+                    <% if logged_in? %>
+                        <%= form_tag(item_orders_path, :method => 'get') do %>
+                        <div class='form-group'>
+                            <%= number_field_tag 'quantities', 1, min: 1, max: @book.copies, class: 'form-control' %>
+                        </div>
+                        <%= hidden_field_tag 'book',  @book.id %>
+                        <div class="form-group">
+                            <%= submit_tag "Dodaj do koszyka", class: 'btn btn-success' %>    
+                        </div>
+                        
+                        <% end %>
+                    <% end %>
+                    <% if logged_in? && current_user.admin? %>
+                    <p style="margin:3px;">
+                        <%= link_to 'Edytuj', edit_book_path(@book.id), class: "btn btn-xs btn-primary" %>
+                        <%= link_to 'Usuń', book_path(@book.id), method: :delete, class: "btn btn-xs btn-danger" %>                      
+                    </p>
+
+                    <% end %>
   </div>
   <div class="col-sm-9">
+      
       <% if @opinions %>
             <% @opinions.each do |opinion| %>
                 <div class="panel panel-primary">

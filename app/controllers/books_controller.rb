@@ -6,6 +6,11 @@ class BooksController < ApplicationController
           @books = Book.search(params[:search],params[:category]).order("price #{params[:price]}")
           @books = @books.paginate(page: params[:page], per_page: 10)
        end
+       if params[:cat]
+          category = Category.find(params[:cat])
+          @books = category.books
+          @books = @books.paginate(page: params[:page], per_page: 10)
+       end
    end
    def new
        @book = Book.new
@@ -24,6 +29,7 @@ class BooksController < ApplicationController
        @book.counter += 1
        @book.save
        @opinions = Opinion.where(book_id: @book.id)
+
    end
    def edit
        @book = Book.find(params[:id])

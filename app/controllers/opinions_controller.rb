@@ -15,6 +15,7 @@ class OpinionsController < ApplicationController
     end
     def show
        @opinions = Opinion.where(book_id: @book.id) 
+       @opinions = @opinions.paginate(page: params[:page], per_page: 3)
     end
     def index
         @opinions = Opinion.where(user_id: session[:user_id])

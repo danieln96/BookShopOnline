@@ -1,6 +1,10 @@
 <% if !logged_in? %>
     <h2 align='center'><%= link_to "Zaloguj się, aby zamówić książki", login_path %></h2>
 <% end %>
+<h4>Kategorie: &nbsp;</h4>
+                    <% Category.all.each do |category| %>
+                        <%= link_to "#{category.name}", books_path(:cat => "#{category.id}"),class:"bnt btn-xs btn-info" %>
+                    <% end %>
 <div align="center"><%= will_paginate %></div>
 <div class='container'>
     <table class='table'>
@@ -39,11 +43,11 @@
                     <td><%= b.pages %></td>
                     <td><%= b.price %> zł</td>
                     <% if b.copies >= 100 %>
-                    <td><font color="green"><%= b.copies %></font></td>
+                    <td><font color="green">Wysoka dostępność</font></td>
                     <% elsif b.copies > 10 && b.copies<100 %>
-                    <td><font color="orange"><%= b.copies %></font></td>
+                    <td><font color="orange">Niska dostępność</font></td>
                     <% else %>
-                    <td><font color="red"><%= b.copies %></font></td>
+                    <td><font color="red">Brak</font></td>
                     <% end %>
                     <% if logged_in? && current_user.admin? %>
                     <td><%= link_to 'Edytuj', edit_book_path(b.id), class: "btn btn-xs btn-primary" %></td>

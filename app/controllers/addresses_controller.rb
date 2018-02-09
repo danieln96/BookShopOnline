@@ -34,11 +34,11 @@ class AddressesController < ApplicationController
        else
         flash[:danger] = "Musisz się zalogować"
         redirect_to login_path
-    end
+       end
    end
    private
    def address_params
-      params.require(:address).permit(:street, :homenumber, :apartnumber, :postalcode, :city, :telnumber) 
+      params.require(:address).permit(:first_name, :last_name, :street, :homenumber, :apartnumber, :postalcode, :city, :telnumber) 
    end
    def require_same_user
        @address = Address.find_by_user_id(params[:id])
@@ -51,5 +51,5 @@ class AddressesController < ApplicationController
         flash[:danger] = "Musisz na sam wpierw dodać adres"
         redirect_to new_address_path(params[:id])
     end
-end
+   end
 end

@@ -10,7 +10,7 @@
         </tr>
         <% @orders.each do |order| %>
         <tr>
-            <td><%= link_to "#{order.id}", showorderitems_path(:id => "#{order.id}") %></td>
+            <td><%= link_to "#{order.id}", showorderitems_path(:id => "#{order.id}"), class:'btn btn-xl btn-primary' %></td>
             <td><%= User.find(order.user_id).username %></td>
             <td><%= order.created_at.strftime( "%F %T ") %></td>
             <td><%= order.total %></td>

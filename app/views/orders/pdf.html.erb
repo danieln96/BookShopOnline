@@ -22,24 +22,3 @@
         <% end %>
     </table>
 </div>
-<h3>Dane do wysyłki:</h3>
-<div><label>Ulica</label>
-<%=@address.street%></div>
-<div><label>Numer domu</label>
-<%=@address.homenumber%></div>
-<div><label>Numer mieszkania</label>
-<%=@address.apartnumber%></div>
-<div><label>Kod pocztowy</label>
-<%=@address.postalcode%></div>
-<div><label>Miejscowość</label>
-<%=@address.city%></div>
-<div><label>Numer telefonu</label>
-<%=@address.telnumber%></div>
-<h3>Wysyłka: <%= Delivery.find(@order.delivery_id).title %></h3>
-<%= link_to "wyślij", shipmentorder_path(:id => "#{@order.id}") ,class: "btn btn-lg btn-success" %>
-<div class="row">
-    <%= link_to "Download PDF",
-  downloadorder_path(:id => "#{@order.id}"),
-  target: "_blank",
-  class: "download" %>
-</div>
