@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
-
-
 gem 'rails', '4.2.7.1'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'sass-rails', '>= 3.2'
@@ -13,7 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'will_paginate', '~> 3.1.1'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'rdoc'
 #obrazki
 gem "paperclip", "~> 5.2.1"
 
@@ -24,14 +22,13 @@ group :development, :test do
   gem 'byebug'
   gem 'spring'
   gem 'sqlite3'
-   gem 'railroady'
+  gem 'railroady'
 end
 group :development do
-    gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 2.0'
 end
 group :production do
- gem 'pg'
-
+  gem 'pg'
   gem 'rails_12factor'
 end
 

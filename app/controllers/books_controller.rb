@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
    before_action :require_admin, only: [:destroy, :edit, :update, :new, :create]
+   ##
+   #Wyświetla listę książek. Korzysta też z filtracji i wyszukiwania
    def index
        @books = Book.paginate(page: params[:page], per_page: 10)
        if params[:search]
@@ -29,7 +31,6 @@ class BooksController < ApplicationController
        @book.counter += 1
        @book.save
        @opinions = Opinion.where(book_id: @book.id)
-
    end
    def edit
        @book = Book.find(params[:id])
