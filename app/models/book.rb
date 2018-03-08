@@ -1,4 +1,4 @@
-class Book < ActiveRecord::Base
+class Book < ApplicationRecord
    has_many :book_categories
    has_many :categories, through: :book_categories
    has_attached_file :avatar, styles: { medium: "300x150", thumb: "150x75" }, default_url: "/images/:style/missing.png"

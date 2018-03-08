@@ -1,5 +1,5 @@
-class Delivery < ActiveRecord::Base
-    has_one :order
+class Delivery < ApplicationRecord
+    belongs_to :order
     validates :title, presence: true
     validates :price, presence: true
 end

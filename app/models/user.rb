@@ -1,6 +1,7 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
     has_many :opinions, :as => :imageable
     has_many :orders
+    has_many :messages
     has_one :address
     before_save { self.email = email.downcase }
     validates :username, presence:true,

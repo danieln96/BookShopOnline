@@ -5,6 +5,7 @@
         <div class="col-sm-2">Kwota</div>
         <div class="col-sm-2">Sposób dostawy</div>
         <div class="col-sm-2">Ostatnie działanie</div>
+        <div class="col-sm-2">Status</div>
         <div class="col-sm-2">Faktura</div>
     </div>
 </div>
@@ -15,10 +16,15 @@
             <div class="col-sm-2"><%= order.total %></div>
             <div class="col-sm-2"><%= Delivery.find_by(id: order.delivery_id).title %></div>
             <div class="col-sm-2"><%= order.updated_at.strftime( "%F %T ") %></div>
-            <div class="col-sm-2"><%= link_to "Pobierz",
+            <div class="col-sm-2"><%= order.status %></div>
+            <div class="col-sm-2">
+            <% if order.status != "Do zapłaty" %>
+            <%= link_to "Pobierz",
               downloadorder_path(:id => "#{order.id}"),
               target: "_blank",
-              class: "btn btn-xl btn-info" %>
+              class: "btn btn-xs btn-info" %>
+              
+            <% end %>
             </div>
         </div>
     <% end %>
