@@ -107,7 +107,7 @@ class OrdersController < ApplicationController
     end
    private
    def require_address
-      if current_user.adress
+      if current_user.address
           
       else
           flash[:danger] = "Musisz dodać adres do swojego konta."
